@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-image: url(img/Gambar\ 1.png);
+    background-size: cover; /* Menyesuaikan gambar agar mencakup seluruh latar belakang */
+    background-position: center; /* Posisi gambar di tengah latar belakang */
+    background-repeat: no-repeat;  /* Menghindari pengulangan gambar */
+}
+
+/*------------ Login container ------------*/
+
+.box-area{
+    width: 450px;
+    margin: 0 10px;
+    background-color: rgba(5, 97, 3, 0.5); /* Warna dengan transparansi */
+}
+
+.textHeejau{
+    color: #044902;
+}
+
+/* #customHeader h2 {
+    color: #044902;
+} */
+
+/*------------ Right box ------------*/
+
+.right-box{
+    padding: 10px 10px 5px 10px;
+    
+}
+
+/*------------ Custom Placeholder ------------*/
+
+::placeholder{
+    font-size: 16px;
+}
+
+
+.text{
+    text-decoration: none;
+    color: white;
+}
+.textDaftar{
+    text-decoration: none;
+    color: white;
+}
+
+/* CSS khusus untuk penempatan bagian lupa kata sandi di tengah */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+
