@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\ModelArtikel;
 use App\Models\User;
 use App\Models\ModelDLH;
+use App\Models\ModelKLH;
 
 class AdminController extends Controller
 {
@@ -39,6 +40,12 @@ class AdminController extends Controller
         $notVerif = "Belum Terverifikasi";
         $getNotVerif = ModelDlh::where('status', $notVerif)->count();
         return view('admin.dlh', compact('getUser', 'getVerif','getNotVerif'));
+    }
+
+    public function klh()
+    {
+        $getUser = ModelKlh::get();
+        return view('admin.klh', compact('getUser'));
     }
 
     public function artikel()

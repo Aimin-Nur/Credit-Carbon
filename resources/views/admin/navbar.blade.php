@@ -163,7 +163,7 @@
                 <div class="dropdown-menu">
                   <div class="dropdown-menu-columns">
                     <div class="dropdown-menu-column">
-                      <a class="dropdown-item" href="./alerts.html">
+                      <a class="dropdown-item" href="/KLHUser/{id}">
                         Kementrian Lingkungan <br> Hidup
                       </a>
                       <a class="dropdown-item" href="/DLHUser/{id}">
