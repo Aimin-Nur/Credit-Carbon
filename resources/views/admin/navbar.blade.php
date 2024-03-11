@@ -341,30 +341,17 @@
           </div>
           <div class="collapse navbar-collapse" id="navbar-menu">
             <div>
-                <!-- Page pre-title -->
-                <div class="page-pretitle">
-                 Ahad, 09 Maret 2024
-               </div>
-               <h4 style="font-size: 15px" class="page-title">
-                   Super Admin
-               </h4>
-             </div>
-          </div>
-        </div>
-      </header>
-
-    <div class="page-wrapper">
-      <!-- Page header -->
-      <div class="page-header d-print-none">
-        <div class="container-xl">
-          <div class="row g-2 align-items-center">
+               <!-- Page pre-title -->
+               <div class="page-pretitle">
+                Rabu, 06 Maret 2024
+              </div>
+              <h4 style="font-size: 15px" class="page-title">
+                  Dashboard Admin
+              </h4>
+            </div>
             <!-- Page title actions -->
-            <div class="col-auto ms-auto d-print-none">
-
             </div>
           </div>
         </div>
-      </div>
-
-
-
+      </header>
+    <div class="page-wrapper">

@@ -49,12 +49,63 @@ class AdminController extends Controller
     {
         $getArtikel = DB::table('artikel')->get();
         // $getArtikel = explode("\n", $get);
-        return view('admin.manageArtikel', compact('getArtikel'));
+        $publish = "Publish";
+        $artikelPublish = ModelArtikel::where('status', $publish)->count();
+
+        $draft = "Draf";
+        $artikelDraft = ModelArtikel::where('status', $draft)->count();
+        return view('admin.manageArtikel', compact('getArtikel','artikelPublish','artikelDraft'));
     }
 
     public function readArtikel()
     {
         return view('admin.viewArtikel');
     }
+
+    public function destroyArticle($id)
+    {
+        $delete = DB::table('artikel')->where('id', $id)->delete();
+
+        if ($delete) {
+            return redirect()->back()->with('hapus', 'Artikel berhasil dihapus.');
+        } else {
+            return redirect()->back()->with('error', 'Artikel gagal dihapus.');
+        }
+    }
+
+    public function editArtikel($id)
+    {
+        $getArtikel = DB::table('artikel')->where('id', $id)->first();
+        return view('admin.editArtikel', compact('getArtikel'));
+    }
+
+    public function editingArtikel($id, Request $request)
+    {
+        // Mengambil data artikel berdasarkan ID
+        $saveArtikel = ModelArtikel::find($id);
+
+        // Memperbarui nilai status, kategori, dan isi artikel
+        $saveArtikel->status = $request->input('field_status');
+        $saveArtikel->kategori = $request->input('field_kategori');
+        $saveArtikel->isi = nl2br($request->input('field_artikel'));
+
+        // Memeriksa apakah ada file gambar yang diunggah
+        if ($request->hasFile('field_foto')) {
+            $file = $request->file('field_foto');
+            $originalName = $file->getClientOriginalName(); // Ambil nama asli file
+
+            // Simpan file ke direktori yang ditentukan
+            $fotoDirectory = 'public/uploads/Artikel';
+            $filePath = $file->storeAs($fotoDirectory, $originalName);
+
+            // Simpan nama file gambar ke database
+            $saveArtikel->gambar = $originalName;
+        }
+
+        // Menyimpan perubahan ke dalam database
+        $saveArtikel->save();
+        return redirect('/manageArtikel')->with('berhasil', 'Artikel Berhasil diEdit.');
+    }
+
 }
 
