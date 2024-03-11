@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ModelArtikel;
 use App\Models\User;
+use App\Models\ModelDLH;
 
 class AdminController extends Controller
 {
@@ -26,6 +27,18 @@ class AdminController extends Controller
         $notVerif = "Belum Terverifikasi";
         $getNotVerif = User::where('status', $notVerif)->count();
         return view('admin.company', compact('getUser', 'getVerif','getNotVerif'));
+    }
+
+    public function dlh ()
+    {
+        $getUser = ModelDLH::get();
+
+        $verif = "Terverifikasi";
+        $getVerif = ModelDlh::where('status', $verif)->count();
+
+        $notVerif = "Belum Terverifikasi";
+        $getNotVerif = ModelDlh::where('status', $notVerif)->count();
+        return view('admin.dlh', compact('getUser', 'getVerif','getNotVerif'));
     }
 
     public function artikel()

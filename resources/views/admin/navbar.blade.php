@@ -166,7 +166,7 @@
                       <a class="dropdown-item" href="./alerts.html">
                         Kementrian Lingkungan <br> Hidup
                       </a>
-                      <a class="dropdown-item" href="./accordion.html">
+                      <a class="dropdown-item" href="/DLHUser/{id}">
                         Dinas Lingkungan Hidup
                       </a>
                       <a class="dropdown-item" href="./blank.html">

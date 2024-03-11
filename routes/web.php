@@ -61,6 +61,7 @@ Route::middleware(['auth:admin'])->group(function (){
     Route::get('/editArtikel/{id}', [AdminController::class, 'editArtikel']);
     Route::post('/editingArtikel/{id}', [AdminController::class, 'editingArtikel']);
     Route::get('/companyUser/{id}', [AdminController::class, 'company']);
+    Route::get('/DLHUser/{id}', [AdminController::class, 'dlh']);
 });
 
 // Route User/Swasta
