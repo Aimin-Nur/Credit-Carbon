@@ -169,7 +169,7 @@
                       <a class="dropdown-item" href="/DLHUser/{id}">
                         Dinas Lingkungan Hidup
                       </a>
-                      <a class="dropdown-item" href="./blank.html">
+                      <a class="dropdown-item" href="/DJPUser/{id}">
                         Direktorat Pajak
                       </a>
                       <a class="dropdown-item" href="/companyUser/{id}">

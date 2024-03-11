@@ -11,6 +11,7 @@ use App\Models\ModelArtikel;
 use App\Models\User;
 use App\Models\ModelDLH;
 use App\Models\ModelKLH;
+use App\Models\ModelDJP;
 
 class AdminController extends Controller
 {
@@ -40,6 +41,12 @@ class AdminController extends Controller
         $notVerif = "Belum Terverifikasi";
         $getNotVerif = ModelDlh::where('status', $notVerif)->count();
         return view('admin.dlh', compact('getUser', 'getVerif','getNotVerif'));
+    }
+
+    public function djp()
+    {
+        $getUser = ModelDJP::get();
+        return view('admin.Djp', compact('getUser'));
     }
 
     public function klh()

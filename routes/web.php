@@ -63,6 +63,7 @@ Route::middleware(['auth:admin'])->group(function (){
     Route::get('/companyUser/{id}', [AdminController::class, 'company']);
     Route::get('/DLHUser/{id}', [AdminController::class, 'dlh']);
     Route::get('/KLHUser/{id}', [AdminController::class, 'klh']);
+    Route::get('/DJPUser/{id}', [AdminController::class, 'djp']);
 });
 
 // Route User/Swasta
