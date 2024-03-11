@@ -1,20 +1,39 @@
 @include('layouts.header')
 @include('DLH.navbar')
 
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="alert alert-info" id="hasilKarbonAlert" role="alert" style="display: none;">
+                <div class="d-flex">
+                  <div>
+                    <!-- Download SVG icon from http://tabler-icons.io/i/info-circle -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon alert-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg>
+                  </div>
+                  <div id="hasilKarbonText">
+                    Karbon yang diserap sebanyak
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
 <div class="container mt-4">
     <div class="row rows-card">
         <div class="col-12">
             <div class="card">
+                <form id="carbonCalcForm" method="POST" enctype="multipart/form-data">
               <div class="card-header">
                 <h3 class="card-title">Masukkan Data Tanaman Anda</h3>
               </div>
               <div class="card-body">
-                <form action="/addPlantbyUser" method="POST" enctype="multipart/form-data">
                     @csrf
                 <div class="row row-cards">
-                  <div class="mb-3 col-sm-8 col-md-9">
+                  <div class="mb-3 col-sm-8 col-md-12">
                     <label class="form-label required">Jenis Tanaman</label>
-                    <select class="form-select" name="field_jenis">
+                    <select class="form-select" name="field_jenis" id="jenisTanaman">
                         <i><option value=""> - Pilih Tanaman -</option></i>
                         <option value="Bunga Kupu-kupu">Bunga Kupu-kupu</option>
                         <option value="Bunga Kupu-kupu ungu">Bunga Kupu-kupu ungu</option>
@@ -80,13 +99,13 @@
                     <tbody>
                       <tr>
                         <td>
-                          <input name="field_umur" type="number" class="form-control">
+                          <input id="umurTanaman" name="field_umur" type="number" class="form-control">
                         </td>
                         <td>
-                            <input name="field_tinggi" type="number" class="form-control" placeholder="tinggi tanaman">
+                            <input id="tinggiTanaman" name="field_tinggi" type="number" class="form-control" placeholder="tinggi tanaman">
                             {{-- <input name="field_idUser" type="hidden" value="{{$getUser->id}}" class="form-control"> --}}
                         <td>
-                            <input name="field_diameter" type="number" class="form-control" placeholder="diameter batang">
+                            <input id="diameterTanaman" name="field_diameter" type="number" class="form-control" placeholder="diameter batang">
                         </td>
                         <td>
                             <input name="field_warna" type="text" class="form-control" placeholder="hijau, coklat, etc">
@@ -105,6 +124,67 @@
     </div>
 </div>
 
+
+<script>
+    document.getElementById('carbonCalcForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var jenisTanaman = document.getElementById('jenisTanaman').value;
+        var tinggiTanaman = parseFloat(document.getElementById('tinggiTanaman').value);
+        var diameterTanaman = parseFloat(document.getElementById('diameterTanaman').value);
+        var umurTanaman = parseFloat(document.getElementById('umurTanaman').value);
+
+
+        // kalkulasi perhitungan karbon
+        var hasilPerhitungan = hitungPenyerapanKarbon(jenisTanaman, tinggiTanaman, diameterTanaman, umurTanaman);
+
+        document.getElementById('hasilKarbonText').textContent = 'Karbon yang diserap sebanyak ' + hasilPerhitungan.toFixed(2) + ' kg CO2.';
+        document.getElementById('hasilKarbonAlert').style.display = 'block';
+    });
+
+    function hitungPenyerapanKarbon(jenisTanaman, tinggiTanaman, diameterTanaman, umurTanaman) {
+
+        var AGB; // Biomassa Di Atas Tanah
+        var BGB; // Biomassa Bawah Tanah
+        var TB; // Total Biomassa
+        var TDW; // Total Berat Kering
+        var TC; // Total Karbon
+        var beratCO2; // Berat CO2
+
+        // Rumus penyerapan karbon pohon
+        var faktorDiameter;
+        if (diameterTanaman < 11) {
+            faktorDiameter = 0.25;
+        } else {
+            faktorDiameter = 0.15;
+        }
+
+        // Calculate Biomassa Di Atas Tanah (AGB)
+        AGB = faktorDiameter * Math.pow(diameterTanaman, 2) * tinggiTanaman;
+
+        // Calculate Biomassa Bawah Tanah (BGB)
+        BGB = 0.2 * AGB;
+
+        // Calculate Total Biomassa (TB)
+        TB = AGB + BGB;
+
+        // Calculate Total Berat Kering (TDW)
+        TDW = TB * 0.725;
+
+        // Calculate Total Karbon (TC)
+        TC = TDW * 0.5;
+
+        // Calculate Berat CO2
+        beratCO2 = TC * 3.67;
+
+        // // Poin Credit
+        // totalPoin = seraoanTahunan*100
+
+        // Adjust for tree tahun
+        var serapanTahunanCO2 = beratCO2 / umurTanaman;
+
+        return serapanTahunanCO2;
+    }
+</script>
 
 
 @include('layouts.footer')

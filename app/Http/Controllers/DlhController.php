@@ -36,6 +36,7 @@ class DlhController extends Controller
 
     public function hitungCarbon()
     {
+
         return view('DLH.calCarbon');
     }
 

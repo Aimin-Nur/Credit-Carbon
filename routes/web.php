@@ -112,8 +112,6 @@ Route::middleware(['auth:djp'])->group(function (){
     Route::post('/approvalCreditCarbon/{id}', [DjpController::class, 'approvalClaimPoint']);
     Route::post('/logoutAdmin', [AuthController::class, 'logoutAdmin']);
     Route::get('/historyApproval', [DjpController::class, 'historyApproval']);
-
-
 });
 
 
