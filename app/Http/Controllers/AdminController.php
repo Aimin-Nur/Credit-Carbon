@@ -8,11 +8,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ModelArtikel;
+use App\Models\User;
 
 class AdminController extends Controller
 {
     public function index(){
         return view('admin.index');
+    }
+
+    public function company()
+    {
+        $getUser = User::get();
+
+        $verif = "Terverifikasi";
+        $getVerif = User::where('status', $verif)->count();
+
+        $notVerif = "Belum Terverifikasi";
+        $getNotVerif = User::where('status', $notVerif)->count();
+        return view('admin.company', compact('getUser', 'getVerif','getNotVerif'));
     }
 
     public function artikel()

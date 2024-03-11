@@ -172,9 +172,9 @@
                       <a class="dropdown-item" href="./blank.html">
                         Direktorat Pajak
                       </a>
-                      <a class="dropdown-item" href="./badges.html">
+                      <a class="dropdown-item" href="/companyUser/{id}">
                         Perusahaan
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Users</span>
                       </a>
 
                     </div>
