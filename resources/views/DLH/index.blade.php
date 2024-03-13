@@ -17,9 +17,7 @@
                           <div class="col-10">
                             <h3 class="h1">Halo, Selamat Datang Admin DLH</h3>
                             <div class="markdown text-secondary">
-                              All icons come from the Tabler Icons set and are MIT-licensed. Visit
-                              <a href="https://tabler-icons.io" target="_blank" rel="noopener">tabler-icons.io</a>,
-                              download any of the 4713 icons in SVG, PNG or&nbsp;React and use them in your favourite design tools.
+                                Selamat datang di halaman Dinas Lingkungan Hidup (DLH). Mari bersama-sama berkontribusi dalam memastikan kelestarian alam melalui pengelolaan tanaman yang terverifikasi dan berkelanjutan.
                             </div>
                           </div>
                         </div>
@@ -61,7 +59,7 @@
                             </div>
                             <div class="col">
                                 <div class="font-weight-medium">
-                                {{$totalValidasi ?? ''}} Pengajuan
+                                {{$getVerifPlant ?? ''}} Pengajuan
                                 </div>
                                 <div class="text-secondary">
                                 <b>Telah Diverifikasi</b>
@@ -83,7 +81,7 @@
                             </div>
                             <div class="col">
                                 <div class="font-weight-medium">
-                                {{$totalPending ?? ''}} Pengajuan
+                                {{$getNotVerifPlant ?? ''}} Pengajuan
                                 </div>
                                 <div class="text-secondary">
                                 <b>Menunggu Untuk Diverifikasi</b>
@@ -104,9 +102,9 @@
                             </div>
                             <div class="col">
                                 <div class="font-weight-medium">
-                                {{$totalUser ?? ''}} Perusahaan
+                                {{$getUnverifiedUsers ?? ''}} Perusahaan
                                 </div>
-                                <div class="text-secondary"><b>Mengajukan Claim Credit Carbon</b>
+                                <div class="text-secondary"><b>Menunggu untuk verifikasi akun</b>
                                 </div>
                             </div>
                             </div>
@@ -118,98 +116,58 @@
                     <div class="col-sm-12 col-lg-12">
                         <div class="card bg-green-lt card-sm">
                           <div class="ribbon ribbon-top ribbon-bookmark bg-green">
-                        
+
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 21c.5 -4.5 2.5 -8 7 -10" /><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z" /></svg>
                           </div>
                           <div class="card-body text-center">
                             <div class="text-uppercase text-secondary font-weight-medium">Total Carbon Yang Telah Diverifikasi</div>
-                            <div class="display-5 fw-bold my-3">$49</div>
+                            <div class="display-5 fw-bold my-3">{{$totalKarbon}} Kg</div>
                             <ul class="list-unstyled lh-lg">
-                              <li><strong>10</strong> Users</li>
+                              <li>dari total<strong> {{$countUser}}</strong> akun users</li>
                             </ul>
                           </div>
                         </div>
                       </div>
-              <div class="col-md-6 col-lg-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Point Plant Trafic</h3>
-                  </div>
-                  <table class="table card-table table-vcenter">
-                    <thead>
-                      <tr>
-                        <th>Company</th>
-                        <th colspan="2">Point</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Kalla Group</td>
-                        <td>3,550</td>
-                        <td class="w-50">
-                          <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 71.0%"></div>
+                      <div class="col-md-6 col-lg-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h3 class="card-title">10 Perusahaan dengan Total Carbon terbanyak</h3>
                           </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Bosowa</td>
-                        <td>1,798</td>
-                        <td class="w-50">
-                          <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 35.96%"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Hyundai</td>
-                        <td>1,245</td>
-                        <td class="w-50">
-                          <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 24.9%"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Gojek</td>
-                        <td>986</td>
-                        <td class="w-50">
-                          <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 19.72%"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Telkom</td>
-                        <td>854</td>
-                        <td class="w-50">
-                          <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 17.08%"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Sanggar Laut</td>
-                        <td>650</td>
-                        <td class="w-50">
-                          <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 13.0%"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>AAS</td>
-                        <td>420</td>
-                        <td class="w-50">
-                          <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 8.4%"></div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                          <table class="table card-table table-vcenter">
+                            <thead>
+                              <tr>
+                                <th>Perusahaan</th>
+                                <th colspan="8">Provinsi</th>
+                                <th colspan="2">Point</th>
+                                <th colspan="2">Progress</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($topCompanies as $company)
+                              <tr>
+                                <td>{{$company->perusahaan}}</td>
+                                <td colspan="8">{{$company->provinsi}}</td>
+                                <td colspan="2">{{ number_format($company->totalCarbon, 0, ',', '.') }} Kg</td>
+                                <td class="w-50">
+                                    <div class="progress progress-xs">
+                                        @php
+                                            $maxTotalCarbon = max($topCompanies->pluck('totalCarbon')->toArray());
+                                        @endphp
+                                         @if($maxTotalCarbon != 0)
+                                            <div class="progress-bar bg-primary" style="width: {{ ($company->totalCarbon / $maxTotalCarbon) * 100 }}%"></div>
+                                         @else
+                                            <div class="progress-bar bg-primary" style="width: 0%"></div>
+                                         @endif
+                                    </div>
+                                </td>
+
+                              </tr>
+                              @endforeach
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
             </div>
           </div>
         </div>

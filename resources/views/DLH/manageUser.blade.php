@@ -35,7 +35,7 @@
                   </div>
                   <div class="col">
                     <div class="font-weight-medium">
-                        {{$notVerif}} DLH Belum Terverifikasi
+                        {{$notVerif}} User Belum Terverifikasi
                       </div>
                       <div class="text-secondary">
                         {{$notVerif}} dari {{$sumOfUser}} Akun User Belum Terverifikasi

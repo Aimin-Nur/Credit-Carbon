@@ -67,7 +67,13 @@
                         <td class="sort-date" data-date="1628122643">{{$plant->created_at}}</td>
                         <td class="sort-progress" data-progress="30">
                           <div class="row align-items-center">
-                            <div class="col-12 col-lg-auto">{{$plant->totalCarbon}}</div>
+                            <div class="col-12 col-lg-auto">
+                                @if ($plant->totalCarbon == 0)
+                                    {{$plant->transactionCarbon}}
+                                @else
+                                {{$plant->totalCarbon}}
+                                @endif
+                            </div>
                           </div>
                         </td>
                       </tr>

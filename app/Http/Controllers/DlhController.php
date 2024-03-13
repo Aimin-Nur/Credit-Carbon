@@ -26,10 +26,48 @@ class DlhController extends Controller
 
         $userStatus = $user->status;
 
+        $provinsi = $user->provinsi;
+        $getVerifPlant = ModelPlant::whereHas('users', function ($query) use ($provinsi) {
+            $query->where('provinsi', $provinsi);
+        })
+        ->where('status', 1)
+        ->count();
+
+        $getNotVerifPlant = ModelPlant::whereHas('users', function ($query) use ($provinsi) {
+            $query->where('provinsi', $provinsi);
+        })
+        ->where('status', 0)
+        ->count();
+
+        $getUnverifiedUsers = User::where('provinsi', $provinsi)
+        ->where('status', "Belum Terverifikasi")
+        ->count();
+
+        $totalCarbon = ModelPlant::whereHas('users', function ($query) use ($provinsi) {
+            $query->where('provinsi', $provinsi);
+        })
+        ->sum('totalCarbon');
+
+        $transactionCarbon = ModelPlant::whereHas('users', function ($query) use ($provinsi) {
+                $query->where('provinsi', $provinsi);
+            })
+            ->sum('transactionCarbon');
+
+        $totalKarbon = $totalCarbon + $transactionCarbon;
+
+        $countUser = User::where('status', "Terverifikasi")->where('provinsi', $provinsi)->count();
+
+        $topCompanies = User::select('users.perusahaan', 'users.provinsi', \DB::raw('SUM(CASE WHEN plant.totalCarbon > 0 THEN plant.totalCarbon ELSE plant.transactionCarbon END) as totalCarbon'))
+                        ->join('plant', 'users.id', '=', 'plant.idUser')
+                        ->groupBy('users.perusahaan', 'users.provinsi')
+                        ->orderByDesc('totalCarbon')
+                        ->limit(10)
+                        ->get();
+
         if ($userStatus === "Belum Terverifikasi") {
             return view('DLH.notVerif');
         } else {
-            return view('DLH.index');
+            return view('DLH.index', compact('getVerifPlant','getNotVerifPlant','getUnverifiedUsers','totalKarbon','countUser','topCompanies'));
         }
 
     }

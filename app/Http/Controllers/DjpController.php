@@ -56,6 +56,7 @@ class DjpController extends Controller{
         $getIdUsers = $request->input('getIdUser');
         $getZero = DB::table('plant')
                     ->where('idUser', $getIdUsers)
+                    ->where('idTransaksi', $id)
                     ->where('status', 1)
                     ->update(['totalCarbon' => 0, 'transactionCarbon' => $getCarbon]);
 

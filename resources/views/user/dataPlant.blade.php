@@ -120,7 +120,13 @@
                         {{$plant->updated_at}}
                         @endif
                       </td>
-                      <td class="text-center">{{$plant->totalCarbon ?? $plant->transactionCarbon ?? '-'}}</td>
+                      <td class="text-center">
+                        @if ($plant->totalCarbon == 0)
+                            {{$plant->transactionCarbon}}
+                        @else
+                            {{$plant->totalCarbon}}
+                        @endif
+                    </td>
                     </tr>
                     @endforeach
                   </tbody>
