@@ -55,12 +55,15 @@ class DlhController extends Controller
 
         $totalKarbon = $totalCarbon + $transactionCarbon;
 
-        $countUser = User::where('status', "Terverifikasi")->where('provinsi', $provinsi)->count();
+        $countUser = User::where('status', "Terverifikasi")->where('
+
+        rovinsi', $provinsi)->count();
 
         $topCompanies = User::select('users.perusahaan', 'users.provinsi', \DB::raw('SUM(CASE WHEN plant.totalCarbon > 0 THEN plant.totalCarbon ELSE plant.transactionCarbon END) as totalCarbon'))
                         ->join('plant', 'users.id', '=', 'plant.idUser')
                         ->groupBy('users.perusahaan', 'users.provinsi')
                         ->orderByDesc('totalCarbon')
+                        ->where('users.provinsi', $provinsi)
                         ->limit(10)
                         ->get();
 
