@@ -80,7 +80,7 @@ Route::group(['middleware' => 'user.data'], function () {
     Route::get('/historyClaimCarbon', [UserController::class, 'historyClaimCarbon']);
     Route::get('/viewHistory', [UserController::class, 'listHistoryClaim']);
     Route::get('/invoice/{id}', [UserController::class, 'invoice']);
-    Route::get('/readArtikel/{id}', [UserController::class, 'readArtikel']);
+    Route::get('/readArtikelbyUsers/{id}', [UserController::class, 'readArtikel']);
 });
 
 // Route Dinas Lingkungan Hidup
@@ -95,6 +95,7 @@ Route::group(['middleware' => 'dlh.data'], function () {
     Route::get('/detailPlant/{id}', [DlhController::class, 'detailPlant']);
     Route::post('/hitungCarbonTanaman', [DlhController::class, 'hitungCarbonTanaman'])->name('hitungCarbonTanaman');
     Route::get('/historyVerifPlant', [DlhController::class, 'historyVerifPlant']);
+    Route::get('/readArtikelbyDlh/{id}', [DlhController::class, 'readArtikel']);
 });
 
 // Route Kementrian Lingkungan hidup
@@ -103,6 +104,7 @@ Route::middleware(['auth:klh'])->group(function (){
     Route::get('/logoutklh', [AuthController::class, 'logoutKlh']);
     Route::get('/managedlh', [KlhController::class, 'manageDlh']);
     Route::post('/sendVerifDlh/{id}', [KlhController::class, 'verifDlh']);
+    Route::get('/readArtikelbyKlh/{id}', [KlhController::class, 'readArtikel']);
 });
 
 // Route Direktoral Jenderal Pajak
@@ -112,6 +114,7 @@ Route::middleware(['auth:djp'])->group(function (){
     Route::post('/approvalCreditCarbon/{id}', [DjpController::class, 'approvalClaimPoint']);
     Route::post('/logoutAdmin', [AuthController::class, 'logoutAdmin']);
     Route::get('/historyApproval', [DjpController::class, 'historyApproval']);
+    Route::get('/readArtikelbyDjp/{id}', [DjpController::class, 'readArtikel']);
 });
 
 

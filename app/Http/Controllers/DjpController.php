@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\ModelDlh;
 use App\Models\User;
 use App\Models\ModelPlant;
+use App\Models\ModelArtikel;
 use App\Models\ModelTransaksi;
 use Carbon\Carbon;
 
@@ -58,8 +59,9 @@ class DjpController extends Controller{
 
         $seriesJson = json_encode($series);
 
+        $getArtikel = ModelArtikel::where('status', "Publish")->get();
 
-        return view('DJP.index', compact('totalPengajuan','totalPending','totalValidasi','totalUser','topCompanies','transactions','seriesJson'));
+        return view('DJP.index', compact('getArtikel','totalPengajuan','totalPending','totalValidasi','totalUser','topCompanies','transactions','seriesJson'));
     }
 
     public function showPengajuan()
@@ -101,6 +103,12 @@ class DjpController extends Controller{
 
         $sumOfTransaksi = DB::table('transaksi')->count();
         return view('DJP.historyPengajuan', compact('getData','sumOfTransaksi'));
+    }
+
+    public function readArtikel($id)
+    {
+        $getId = ModelArtikel::where('id', $id)->first();
+        return view('DJP.viewArtikel', compact('getId'));
     }
 
 

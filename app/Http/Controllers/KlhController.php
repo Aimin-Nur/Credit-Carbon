@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\ModelKlh;
 use App\Models\ModelDlh;
 use App\Models\User;
+use App\Models\ModelArtikel;
+
 
 class KlhController extends Controller
 {
@@ -21,7 +23,9 @@ class KlhController extends Controller
                         ->limit(10)
                         ->get();
 
-        return view('KLH.index', compact('getCount','topProvinces'));
+        $getArtikel = ModelArtikel::where('status', "Publish")->get();
+
+        return view('KLH.index', compact('getCount','topProvinces','getArtikel'));
     }
 
     public function regisKlh()
@@ -56,4 +60,11 @@ class KlhController extends Controller
         $getDlh->update();
         return redirect('/managedlh')->with('berhasil', 'Akun DLH berhasil diverifikasi');
     }
+
+    public function readArtikel($id)
+    {
+        $getId = ModelArtikel::where('id', $id)->first();
+        return view('KLH.viewArtikel', compact('getId'));
+    }
+
 }

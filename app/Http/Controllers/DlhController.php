@@ -10,6 +10,8 @@ use App\Models\ModelDlh;
 use App\Models\User;
 use App\Models\ModelPlant;
 use App\Models\ModelTransaksi;
+use App\Models\ModelArtikel;
+
 
 class DlhController extends Controller
 {
@@ -65,10 +67,12 @@ class DlhController extends Controller
                         ->limit(10)
                         ->get();
 
+        $getArtikel = ModelArtikel::where('status', "Publish")->get();
+
         if ($userStatus === "Belum Terverifikasi") {
             return view('DLH.notVerif');
         } else {
-            return view('DLH.index', compact('getVerifPlant','getNotVerifPlant','getUnverifiedUsers','totalKarbon','countUser','topCompanies'));
+            return view('DLH.index', compact('getArtikel','getVerifPlant','getNotVerifPlant','getUnverifiedUsers','totalKarbon','countUser','topCompanies'));
         }
 
     }
@@ -178,4 +182,11 @@ class DlhController extends Controller
 
         return view('DLH.historyVerifPlant', compact('getPlant','s','u','n','getPlantUser'));
     }
+
+    public function readArtikel($id)
+    {
+        $getId = ModelArtikel::where('id', $id)->first();
+        return view('DLH.viewArtikel', compact('getId'));
+    }
+
 }
