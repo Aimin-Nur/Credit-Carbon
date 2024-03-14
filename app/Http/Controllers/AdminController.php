@@ -82,7 +82,7 @@ class AdminController extends Controller
         }
 
         $saveArtikel->save();
-        return redirect('/artikel')->with('Berhasil', 'Artikel Berhasil ditambhakan.');
+        return redirect('/manageArtikel')->with('berhasil', 'Artikel Berhasil ditambhakan.');
     }
 
     public function manageArtikel()
@@ -97,9 +97,10 @@ class AdminController extends Controller
         return view('admin.manageArtikel', compact('getArtikel','artikelPublish','artikelDraft'));
     }
 
-    public function readArtikel()
+    public function readArtikel($id)
     {
-        return view('admin.viewArtikel');
+        $getId = ModelArtikel::where('id', $id)->first();
+        return view('admin.viewArtikel', compact('getId'));
     }
 
     public function destroyArticle($id)

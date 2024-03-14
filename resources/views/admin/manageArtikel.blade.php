@@ -64,13 +64,13 @@
                         <div class="img-responsive img-responsive-21x9 card-img-top"style="background-image: url('{{ asset('storage/uploads/Artikel/' . $artikel->gambar) }}')"></div>
                         <div class="card-body">
                         <h3 class="card-title">{{$artikel->kategori}}</h3>
-                        <p class="text-secondary">{!! $artikel->isi !!}</p>
+                        <p class="text-secondary">{!! \Illuminate\Support\Str::words($artikel->isi, 25, '...') !!}</p>
                         </div>
                         <div class="card-footer">
                         <div class="d-flex">
-                            <a href="#" class="btn btn-link me-auto">Last Update 3 mins Ago</a>
+                            <a class="btn btn-link me-auto">{{ \Carbon\Carbon::parse($artikel->created_at)->format('F d, Y') }}
                             <div class="btn-group ms-auto">
-                                <a href="/readArtikel" class="btn btn-md btn-primary btn-icon">
+                                <a href="/readArtikel/{{$artikel->id}}" class="btn btn-md btn-primary btn-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><path d="M3 6l0 13" /><path d="M12 6l0 13" /><path d="M21 6l0 13" /></svg>
                                 </a>
                                 <a href="/editArtikel/{{$artikel->id}}" class="btn btn-md btn-warning btn-icon">

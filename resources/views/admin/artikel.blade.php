@@ -35,7 +35,7 @@
                   <div class="col-md-12">
                     <div class="mb-3 mb-0">
                         <label class="form-label">Artikel</label>
-                        <textarea name="field_artikel" id="editor" rows="5" class="form-control" /required></textarea>
+                        <textarea name="field_artikel" id="editor" rows="5" class="form-control"></textarea>
 
                         <script>
                             ClassicEditor

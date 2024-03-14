@@ -64,10 +64,24 @@
                 </table>
 
                 </div>
-              </div>
+        </div>
+        <div class="col-md-6 col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Dinas Lingkungan Hidup yang telah verifikasi akun</h3>
+                </div>
+                <div class="card-body">
+                    <div id="chart-demo-pie"></div>
+                </div>
+            </div>
+        </div>
       </div>
     </div>
 </div>
+
+
+
+
 
 
 @include('layouts.footer')

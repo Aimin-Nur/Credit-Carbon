@@ -57,7 +57,7 @@ class DjpController extends Controller{
                 }
 
         $seriesJson = json_encode($series);
-        
+
 
         return view('DJP.index', compact('totalPengajuan','totalPending','totalValidasi','totalUser','topCompanies','transactions','seriesJson'));
     }
