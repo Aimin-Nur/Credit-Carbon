@@ -71,12 +71,14 @@ class UserController extends Controller
         $regis->name = $request->input('username');
         $regis->password = $request->input('password');
         $regis->email = $request->input('email');
+        $regis->provinsi = $request->input('provinsi');
         $regis->status = "Belum Terverifikasi";
         $regis->save();
 
-        $transaksi = new ModelTransaksi;
-        $transaksi->idUser = $regis->id;
-        $transaksi->save();
+
+        // $transaksi = new ModelTransaksi;
+        // $transaksi->idUser = $regis->id;
+        // $transaksi->save();
 
         return redirect('/portal')->with('Accepted', 'Berhasil Registarasi Akun, Silahkan Login.');
     }
