@@ -17,9 +17,7 @@
                           <div class="col-10">
                             <h3 class="h1">Halo, Selamat Datang Admin DJP</h3>
                             <div class="markdown text-secondary">
-                              All icons come from the Tabler Icons set and are MIT-licensed. Visit
-                              <a href="https://tabler-icons.io" target="_blank" rel="noopener">tabler-icons.io</a>,
-                              download any of the 4713 icons in SVG, PNG or&nbsp;React and use them in your favourite design tools.
+                              Setiap Users yang akan melakukan Claim Credit Carbon harus terlebih dahulu diverifikasi oleh Direktorat Jenderal Pajak, Silahkan lakukan verifikasi pengajuan Credit Carbon.
                             </div>
                           </div>
                         </div>
@@ -56,8 +54,7 @@
                             <div class="row align-items-center">
                             <div class="col-auto">
                                 <span class="bg-green text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-seeding" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 10a6 6 0 0 0 -6 -6h-3v2a6 6 0 0 0 6 6h3" /><path d="M12 14a6 6 0 0 1 6 -6h3v1a6 6 0 0 1 -6 6h-3" /><path d="M12 20l0 -10" /></svg>
-                                </span>
+                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-cash"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 9m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z" /><path d="M14 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 9v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2" /></svg>
                             </div>
                             <div class="col">
                                 <div class="font-weight-medium">
@@ -78,7 +75,7 @@
                             <div class="row align-items-center">
                             <div class="col-auto">
                                 <span class="bg-red text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-receipt-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" /><path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5" /></svg>
+                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-coin-off"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.8 9a2 2 0 0 0 -1.8 -1h-1m-2.82 1.171a2 2 0 0 0 1.82 2.829h1m2.824 2.822a2 2 0 0 1 -1.824 1.178h-2a2 2 0 0 1 -1.8 -1" /><path d="M20.042 16.045a9 9 0 0 0 -12.087 -12.087m-2.318 1.677a9 9 0 1 0 12.725 12.73" /><path d="M12 6v2m0 8v2" /><path d="M3 3l18 18" /></svg>
                                 </span>
                             </div>
                             <div class="col">
@@ -116,14 +113,6 @@
                     </div>
                     </div>
               {{-- chart --}}
-              {{-- <div class="col-lg-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h3 class="card-title">Traffic summary</h3>
-                    <div id="chart-mentions" class="chart-lg"></div>
-                  </div>
-                </div>
-              </div> --}}
               {{-- <div class="col-md-12 col-lg-8">
                 <div class="card">
                   <div class="card-header">
@@ -243,7 +232,7 @@
               <div class="col-md-6 col-lg-12">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Point Plant Trafic</h3>
+                    <h3 class="card-title">Top 10 Perusahaan dengan total transaksi tertinggi</h3>
                   </div>
                   <table class="table card-table table-vcenter">
                     <thead>
@@ -259,17 +248,17 @@
                       <tr>
                         <td>{{$company->perusahaan}}</td>
                         <td colspan="8">{{$company->provinsi}}</td>
-                        <td colspan="2">{{ number_format($company->totalCarbon, 0, ',', '.') }} Kg</td>
+                        <td colspan="2">{{ number_format($company->totalPoint, 0, ',', '.') }} Kg</td>
                         <td class="w-50">
                             <div class="progress progress-xs">
                                 @php
-                                    $maxTotalCarbon = max($topCompanies->pluck('totalCarbon')->toArray());
+                                    $maxTotalPoint = max($topCompanies->pluck('totalPoint')->toArray());
                                 @endphp
-                                 @if($maxTotalCarbon != 0)
-                                    <div class="progress-bar bg-primary" style="width: {{ ($company->totalCarbon / $maxTotalCarbon) * 100 }}%"></div>
-                                 @else
+                                 @if($maxTotalPoint != 0)
+                                    <div class="progress-bar bg-primary" style="width: {{ ($company->totalPoint / $maxTotalPoint) * 100 }}%"></div>
+                                @else
                                     <div class="progress-bar bg-primary" style="width: 0%"></div>
-                                 @endif
+                                @endif
                             </div>
                         </td>
 
@@ -422,6 +411,76 @@
       </div>
     </div>
 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            window.ApexCharts && (new ApexCharts(document.getElementById('chart-mentions'), {
+                chart: {
+                    type: "bar",
+                    fontFamily: 'inherit',
+                    height: 240,
+                    parentHeightOffset: 0,
+                    toolbar: {
+                        show: false,
+                    },
+                    animations: {
+                        enabled: false
+                    },
+                    stacked: true,
+                },
+                plotOptions: {
+                    bar: {
+                        columnWidth: '50%',
+                    }
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                fill: {
+                    opacity: 1,
+                },
+                series: {!! $seriesJson !!}, // Menyisipkan variabel seriesJson
+                tooltip: {
+                    theme: 'dark'
+                },
+                grid: {
+                    padding: {
+                        top: -20,
+                        right: 0,
+                        left: -4,
+                        bottom: -4
+                    },
+                    strokeDashArray: 4,
+                },
+                xaxis: {
+                    lines: {
+                        show: true
+                    },
+                    categories: {!! $transactions->pluck('created_at')->toJson() !!}, // Menyisipkan variabel categories
+                    labels: {
+                        padding: 0,
+                    },
+                    tooltip: {
+                        enabled: false
+                    },
+                    axisBorder: {
+                        show: false,
+                    },
+                    type: 'datetime',
+                },
+                yaxis: {
+                    labels: {
+                        padding: 4
+                    },
+                },
+                colors: [tabler.getColor("primary"), tabler.getColor("primary", 0.8), tabler.getColor("green", 0.8)],
+                legend: {
+                    show: true,
+                    position: 'top',
+                },
+            })).render();
+        });
+    </script>
 
 
 @include('layouts.script')

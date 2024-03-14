@@ -324,8 +324,7 @@
           <div class="collapse navbar-collapse" id="navbar-menu">
             <div>
                <!-- Page pre-title -->
-               <div class="page-pretitle">
-                Rabu, 06 Maret 2024
+               <div class="page-pretitle" id="tanggalDiv">
               </div>
               <h4 style="font-size: 15px" class="page-title">
                   Perusahaan {{$getUser->perusahaan}}

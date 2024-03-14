@@ -291,7 +291,7 @@
             </div>
             <div class="nav-item dropdown">
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                <span class="avatar avatar-sm" style="background-image: url({{asset('demo')}}/./static/avatars/djp.webp)"></span>
                 <div class="d-none d-xl-block ps-2">
                   <div>Admin DJP</div>
                   <div class="mt-1 small text-secondary">Direktorat Pajak</div>
@@ -310,8 +310,8 @@
           <div class="collapse navbar-collapse" id="navbar-menu">
             <div>
                <!-- Page pre-title -->
-               <div class="page-pretitle">
-                Rabu, 06 Maret 2024
+               <div class="page-pretitle" id="tanggalDiv">
+               
               </div>
               <h4 style="font-size: 15px" class="page-title">
                    Direktorat Jenderal Pajak
