@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\View;
 use App\Models\ModelPlant;
 use App\Models\ModelTransaksi;
+use App\Models\ModelArtikel;
 
 class UserController extends Controller
 {
@@ -51,10 +52,13 @@ class UserController extends Controller
         $sumOfPlantVerif = DB::table('plant')->where('idUser', $idUser)->where('status', 1)->count();
         $topFive = DB::table('plant')->where('idUser', $idUser)->where('status', 1)->orderByDesc('totalCarbon')->limit(5)->get();
 
+        $getArtikel = ModelArtikel::where('status', "Publish")->get();
+
+
         if ($userStatus === "Belum Terverifikasi") {
             return view('user.notVerif');
         } else {
-            return view('user.index', compact('categories', 'seriesData', 'formattedSumOfCarbon','sumOfTransaksi','sumOfPlant', 'sumOfPlantVerif', 'topFive'));
+            return view('user.index', compact('getArtikel','categories', 'seriesData', 'formattedSumOfCarbon','sumOfTransaksi','sumOfPlant', 'sumOfPlantVerif', 'topFive'));
         }
     }
 
@@ -231,5 +235,11 @@ class UserController extends Controller
         $transactions = ModelTransaksi::with('plant', 'users')->where('idTransaksi', $id)->get();
         $getSumPoint = ModelTransaksi::select('sumOfPoint','sumOfCarbon', 'updated_at')->where('idTransaksi', $id)->first();
         return view('user.invoice', compact('transactions','getUser','getSumPoint'));
+    }
+
+    public function readArtikel($id)
+    {
+        $getId = ModelArtikel::where('id', $id)->first();
+        return view('user.viewArtikel', compact('getId'));
     }
 }
