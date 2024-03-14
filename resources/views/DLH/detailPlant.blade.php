@@ -26,12 +26,7 @@
             <div class="datagrid">
               <div class="datagrid-item">
                 <div class="datagrid-title">Jenis Tanaman</div>
-                {{-- @foreach ($getDetailPlant as )
-
-                @endforeach --}}
                 <div class="datagrid-content">{{$getDetailPlant->jenis}}</div>
-
-
               </div>
               <div class="datagrid-item">
                 <div class="datagrid-title">Tinggi Batang</div>
@@ -81,19 +76,38 @@
               <div class="datagrid-item">
                 <div class="datagrid-title">Foto Tanaman</div>
                 <div class="datagrid-content">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/check -->
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon text-green" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
-                  Checked
+                    <div class="d-flex align-items-center">
+                        @if($getDetailPlant->foto)
+                            <span class="avatar avatar-md me-2" style="background-image: url('{{ asset('storage/uploads/Plant-User/' . $getDetailPlant->foto) }}')"></span>
+                        @else
+                            <span class="avatar avatar-md me-2" style="background-image: url('{{ asset('storage/uploads/Plant-User/default.png') }}')"></span>
+                        @endif
+                      </div>
                 </div>
               </div>
-                <div class="row row-cards mt-3">
-                    <div class="mb-3 col-sm-12 col-lg-12">
-                        <label class="form-label required">Lokasi Tanaman</label>
-                        <input type="hidden" id="lokasi" name="field_lokasi">
-                        <div id="map"></div>
-                    </div>
+
+            </div>
+            <div class="mt-5 col-lg-12">
+                <label class="form-label required">Lokasi Tanaman</label>
+                <input type="hidden" id="lokasi" value="{{$getDetailPlant->lokasi}}">
+                <div id="map"></div>
+            </div>
+            <div class="row">
+                <div class="mt-2 col-lg-12 col-md-12 col-sm-12 ms-auto">
+                    <a href="https://www.google.com/search?q={{$getDetailPlant->lokasi}}" target="_blank" class="btn btn-primary me-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-lg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-map-2">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 18.5l-3 -1.5l-6 3v-13l6 -3l6 3l6 -3v7.5" />
+                            <path d="M9 4v13" />
+                            <path d="M15 7v5.5" />
+                            <path d="M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879z" />
+                            <path d="M19 18v.01" />
+                        </svg>
+                        Detail Lokasi
+                    </a>
                 </div>
             </div>
+
           </div>
         </div>
         <div class="col-12">
@@ -106,7 +120,7 @@
                     <p class="m-0 text-secondary">Pastikan Anda melakukan verifikasi tanaman user sesuia dengan ketentuan regulasi yang berlaku.</p>
                   </div>
                   <div class="col-auto">
-                    <a href="#" class="btn" id="bookDemoBtn" data-bs-toggle="modal" data-bs-target="#modal-danger">
+                    <a href="#" class="btn btn-outline-warning" id="bookDemoBtn" data-bs-toggle="modal" data-bs-target="#modal-danger">
                       Verifikasi Tanaman
                     </a>
                   </div>
