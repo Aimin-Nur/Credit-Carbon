@@ -93,7 +93,6 @@ class DjpController extends Controller{
                        ->where('status', 1)
                        ->pluck('idPlant');
 
-        // Iterasi melalui setiap idPlant dan update nilai transactionCarbon
         foreach ($idPlants as $idPlant) {
             $carbonOri = array_shift($getCarbonOri);
             ModelPlant::where('idPlant', $idPlant)->update(['totalCarbon' => 0, 'transactionCarbon' => $carbonOri]);

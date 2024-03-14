@@ -50,7 +50,7 @@ class UserController extends Controller
         $sumOfTransaksi = DB::table('transaksi')->where('idUser', $idUser)->where('status',1)->count();
         $sumOfPlant = DB::table('plant')->where('idUser', $idUser)->where('status', 0)->count();
         $sumOfPlantVerif = DB::table('plant')->where('idUser', $idUser)->where('status', 1)->count();
-        $topFive = DB::table('plant')->where('idUser', $idUser)->where('status', 1)->orderByDesc('totalCarbon')->limit(5)->get();
+        $topFive = DB::table('plant')->where('idUser', $idUser)->where('status', 1)->orderByDesc('totalCarbon')->limit(3)->get();
 
         $getArtikel = ModelArtikel::where('status', "Publish")->get();
 

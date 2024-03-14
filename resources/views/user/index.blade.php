@@ -87,6 +87,9 @@
           </div>
           <div class="col-12">
             <div class="card">
+                <div class="card-header">
+                    <span class="text-center fw-bold">Top 3 Tanaman dengan Skor Carbon Tertinggi</span>
+                </div>
               <div class="card-table table-responsive">
                 <table class="table">
                   <thead>
