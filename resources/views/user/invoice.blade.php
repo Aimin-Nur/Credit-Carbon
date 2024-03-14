@@ -62,38 +62,38 @@
               </thead>
               @foreach ($transactions as $t )
               <tr>
-                <td class="text-center"><span class="avatar me-2" style="background-image: url('{{ asset('storage/uploads/Plant-User/' . $t->plant->foto) }}')"></span></td>
+                <td class="text-center"><span class="avatar me-2" style="background-image: url('{{ asset('storage/uploads/Plant-User/' . $t->foto) }}')"></span></td>
                 <td>
-                    @if ($t->plant)
+                    @if ($t->jenis)
 
-                    <p class="strong mb-1">{{ $t->plant->jenis}}</p>
+                    <p class="strong mb-1">{{ $t->jenis}}</p>
                 @else
                     <p class="text-danger">Data tanaman tidak ditemukan</p>
                 @endif
-                  <div class="text-secondary">Warna Daun : {{$t->plant->warna_daun}}</div>
+                  <div class="text-secondary">Warna Daun : {{$t->warna_daun}}</div>
                 </td>
                 <td class="text-center">
-                    {{$t->plant->tinggi}} cm
+                    {{$t->tinggi}} cm
                 </td>
                 <td class="text-center">
-                    {{$t->plant->diameter}} cm
+                    {{$t->diameter}} cm
                 </td>
                 <td class="text-center">
-                    {{$t->plant->umur}} Tahun
+                    {{$t->umur}} Tahun
                 </td>
                 <td class="text-center">
-                  @if ($t->plant->totalCarbon == 0)
-                    {{$t->plant->transactionCarbon}}
+                  @if ($t->totalCarbon == 0)
+                    {{$t->transactionCarbon}}
                   @else
-                     {{$t->plant->totalCarbon}}
+                     {{$t->totalCarbon}}
                   @endif
                 </td>
 
                 <td class="text-center">
-                    @if ($t->plant->totalCarbon == 0)
-                      {{$t->plant->transactionCarbon*100}}
+                    @if ($t->totalCarbon == 0)
+                      {{$t->transactionCarbon*100}}
                     @else
-                       {{$t->plant->totalCarbon*100}}
+                       {{$t->totalCarbon*100}}
                     @endif
                   </td>
               </tr>

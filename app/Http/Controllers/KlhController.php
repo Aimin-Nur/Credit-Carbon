@@ -67,4 +67,18 @@ class KlhController extends Controller
         return view('KLH.viewArtikel', compact('getId'));
     }
 
+    public function showCarbonUser()
+    {
+        $userCarbon = User::select('users.perusahaan as nama_perusahaan','users.provinsi as provinsi', 'users.foto as foto')
+                    ->join('plant', 'users.id', '=', 'plant.IdUser')
+                    ->where('plant.status', 1)
+                    ->selectRaw('COUNT(plant.idPlant) as jumlah_tanaman')
+                    ->selectRaw('SUM(CASE WHEN plant.totalCarbon > 0 THEN plant.totalCarbon ELSE plant.transactionCarbon END) as total_carbon')
+                    ->groupBy('users.perusahaan', 'users.provinsi', 'users.foto')
+                    ->orderBy('total_carbon', 'DESC')
+                    ->get();
+
+        return view('KLH.showCarbonUser', compact('userCarbon'));
+    }
+
 }

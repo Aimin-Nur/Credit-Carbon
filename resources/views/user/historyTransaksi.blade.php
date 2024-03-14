@@ -37,7 +37,7 @@
                     <td class="sort-city">{{$history->sumOfCarbon}} Kg</td>
                     <td class="sort-type">{{$history->sumOfPoint}}</td>
                     <td class="sort-score">{{$history->created_at}}</td>
-                    <td class="sort-date"> <a href="/invoice/{{$history->idTransaksi}}">Lihat Invoice</a></td>
+                    <td class="sort-date"> <a class="btn btn-sm btn-outline-primary" href="/invoice/{{$history->idTransaksi}}">Lihat Invoice</a></td>
                   </tr>
                   @endforeach
                 </tbody>

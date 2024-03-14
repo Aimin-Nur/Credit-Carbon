@@ -210,44 +210,36 @@
         }
     }
 
-    // Fungsi untuk mengakses kamera dan menampilkan tampilan langsung di dalam div webcam
     async function openCamera() {
         try {
-            // Hapus gambar yang mungkin ditampilkan sebelumnya
+
             webcamContainer.innerHTML = '';
-
-            // Akses kamera pengguna
             stream = await navigator.mediaDevices.getUserMedia({ video: true });
-
-            // Buat elemen video untuk menampilkan tampilan langsung kamera
             videoElement = document.createElement('video');
 
-            // Atur properti videoElement
-            videoElement.autoplay = true;
-            videoElement.width = webcamContainer.clientWidth; // Sesuaikan lebar video dengan lebar div webcam
-            videoElement.height = webcamContainer.clientHeight; // Sesuaikan tinggi video dengan tinggi div webcam
 
-            // Atur objek aliran media ke elemen video
+            videoElement.autoplay = true;
+            videoElement.width = webcamContainer.clientWidth;
+            videoElement.height = webcamContainer.clientHeight;
+
+
             videoElement.srcObject = stream;
 
-            // Tunggu hingga metadata video siap
-            await videoElement.play();
 
-            // Tambahkan elemen video ke dalam div webcam
+            await videoElement.play();
             webcamContainer.appendChild(videoElement);
 
-            // Buat elemen img untuk menampilkan gambar yang diambil
-            capturedImageElement = document.createElement('img');
-            capturedImageElement.classList.add('captured-image'); // Tambahkan kelas untuk styling
-            webcamContainer.appendChild(capturedImageElement); // Tambahkan elemen ke dalam div webcam
 
-            // Tampilkan tombol "Ambil Gambar" setelah membuka kamera
+            capturedImageElement = document.createElement('img');
+            capturedImageElement.classList.add('captured-image');
+            webcamContainer.appendChild(capturedImageElement);
+
+
             const captureButton = document.createElement('button');
             captureButton.textContent = 'Ambil Gambar';
             captureButton.onclick = capture;
             webcamContainer.appendChild(captureButton);
         } catch (error) {
-            // Tangani kesalahan saat mengakses kamera
             console.error('Error accessing the camera:', error);
         }
     }

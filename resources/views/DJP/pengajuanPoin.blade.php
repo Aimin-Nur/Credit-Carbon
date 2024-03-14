@@ -22,9 +22,9 @@
               <thead>
                 <tr>
                   <td class="w-50">
-                    <h2>Pricing plans for teams of all sizes</h2>
+                    <h2>Claim Credit Carbon</h2>
                     <div class="text-secondary text-wrap">
-                      Choose an affordable plan that comes with the best features to engage your audience, create customer loyalty and increase sales.
+                     User akan mengajukan potongan pajak sesuai dengan poin credit carbon yang diperoleh. Credit Carbon users telah terverifikasi oleh Dinas Lingkungan Hidup setempat.
                     </div>
                   </td>
                   <td class="text-center">
@@ -65,7 +65,7 @@
                         <td class="sort-name">{{$plant->users->perusahaan}}</td>
                         <td class="sort-name">{{$plant->users->provinsi}}</td>
                         <td class="sort-name"><b>{{$plant->sumOfPoint}}</b></td>
-                        <td class="sort-name">{{$plant->updated_at}}</td>
+                        <td class="sort-name">{{ \Carbon\Carbon::parse($plant->updated_at)->format('F d, Y') }}</td>
                         <td class="sort-progress" data-progress="30">
                           <div class="row align-items-center">
                             <div class="col-12 col-lg-auto"><a href="" data-bs-toggle="modal" data-bs-target="#modal-success{{$plant->idTransaksi}}">Verifikasi</a></div>

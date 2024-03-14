@@ -230,9 +230,11 @@ class UserController extends Controller
 
     public function invoice($id)
     {
+
         $idUser = Auth::guard('swasta')->id();
         $getUser = Auth::guard('swasta')->user();
-        $transactions = ModelTransaksi::with('plant', 'users')->where('idTransaksi', $id)->get();
+        $transactions = ModelPlant::with('transaksi', 'users')->where('idTransaksi', $id)->where('idUser', $idUser)->get();
+
         $getSumPoint = ModelTransaksi::select('sumOfPoint','sumOfCarbon', 'updated_at')->where('idTransaksi', $id)->first();
         return view('user.invoice', compact('transactions','getUser','getSumPoint'));
     }

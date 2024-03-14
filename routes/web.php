@@ -105,6 +105,7 @@ Route::middleware(['auth:klh'])->group(function (){
     Route::get('/managedlh', [KlhController::class, 'manageDlh']);
     Route::post('/sendVerifDlh/{id}', [KlhController::class, 'verifDlh']);
     Route::get('/readArtikelbyKlh/{id}', [KlhController::class, 'readArtikel']);
+    Route::get('/showCarbonUser', [KlhController::class, 'showCarbonUser']);
 });
 
 // Route Direktoral Jenderal Pajak

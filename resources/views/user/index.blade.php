@@ -117,9 +117,7 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="container-xl mt-4">
+      <div class="container-xl mt-4">
         <div class="row mt-5">
             <div class="col">
                 <!-- Page pre-title -->
@@ -155,8 +153,11 @@
                     </div>
                     @endforeach
             </div>
-        </div>
     </div>
+
+
+
+
 
 
     <script>

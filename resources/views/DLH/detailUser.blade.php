@@ -66,7 +66,7 @@
                             </div>
                             <div class="datagrid-item">
                               <div class="datagrid-title">Tanggal Daftar Akun</div>
-                              <div class="datagrid-content">{{$user->created_at}}</div>
+                              <div class="datagrid-content">{{ \Carbon\Carbon::parse($user->created_at)->format('F d, Y') }}</div>
                             </div>
                             <div class="datagrid-item">
                               <div class="datagrid-title">Status Akun</div>
@@ -78,7 +78,7 @@
                             </div>
                             <div class="datagrid-item">
                               <div class="datagrid-title">Tanggal Akun diverifkasi</div>
-                              <div class="datagrid-content">{{$user->updated_at}}</div>
+                              <div class="datagrid-content">{{ \Carbon\Carbon::parse($user->updated_at)->format('F d, Y') }}</div>
                             </div>
                             <div class="datagrid-item">
                               <div class="datagrid-title">Email User</div>

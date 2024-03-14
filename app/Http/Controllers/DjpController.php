@@ -78,19 +78,26 @@ class DjpController extends Controller{
     public function approvalClaimPoint($id, Request $request)
     {
 
+        $getCarbonOri = ModelPlant::where('idTransaksi', $id)->pluck('totalCarbon')->all();
+
+
         $update = ModelTransaksi::findOrFail($id);
         // $update->sumOfCarbon = 0;
         // $update->sumOfPoint = 0;
         $update->status = 1;
         $update->save();
 
-        $getCarbon = $request->input('getCarbon');
         $getIdUsers = $request->input('getIdUser');
-        $getZero = DB::table('plant')
-                    ->where('idUser', $getIdUsers)
-                    ->where('idTransaksi', $id)
-                    ->where('status', 1)
-                    ->update(['totalCarbon' => 0, 'transactionCarbon' => $getCarbon]);
+        $idPlants = ModelPlant::where('idUser', $getIdUsers)
+                       ->where('idTransaksi', $id)
+                       ->where('status', 1)
+                       ->pluck('idPlant');
+
+        // Iterasi melalui setiap idPlant dan update nilai transactionCarbon
+        foreach ($idPlants as $idPlant) {
+            $carbonOri = array_shift($getCarbonOri);
+            ModelPlant::where('idPlant', $idPlant)->update(['totalCarbon' => 0, 'transactionCarbon' => $carbonOri]);
+        }
 
         return redirect('/pengajuanPoinCarbon')->with('berhasil', 'Poin Credit Carbon User Berhasil di Claim');
     }

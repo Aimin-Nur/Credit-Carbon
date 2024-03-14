@@ -94,7 +94,7 @@
                       </div>
                     </td>
                     <td data-label="Title" >
-                      <div>{{$data->updated_at ?? ''}}</div>
+                      <div>{{ \Carbon\Carbon::parse($data->created_at)->format('F d, Y') }}</div>
                     </td>
                     <td class="text-secondary" data-label="Role" >
                      <b>{{$data->status}}</b>

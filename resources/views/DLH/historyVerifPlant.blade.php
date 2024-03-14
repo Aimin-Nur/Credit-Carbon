@@ -64,7 +64,7 @@
                         <td class="sort-type">{{$plant->tinggi}} cm</td>
                         <td class="sort-score">{{$plant->diameter}} cm</td>
                         <td class="sort-quantity">{{$plant->umur}} Tahun</td>
-                        <td class="sort-date" data-date="1628122643">{{$plant->created_at}}</td>
+                        <td class="sort-date" data-date="1628122643">{{ \Carbon\Carbon::parse($plant->created_at)->format('F d, Y') }}</td>
                         <td class="sort-progress" data-progress="30">
                           <div class="row align-items-center">
                             <div class="col-12 col-lg-auto">

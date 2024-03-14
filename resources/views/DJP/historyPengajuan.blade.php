@@ -13,40 +13,7 @@
         </div>
       </div>
     </div>
-    <!-- Page body -->
-    <div class="page-body">
-      <div class="container-xl">
-        <div class="card">
-          <div class="table-responsive">
-            <table class="table table-vcenter table-bordered table-nowrap card-table">
-              <thead>
-                <tr>
-                  <td class="w-50">
-                    <h2>Pricing plans for teams of all sizes</h2>
-                    <div class="text-secondary text-wrap">
-                      Choose an affordable plan that comes with the best features to engage your audience, create customer loyalty and increase sales.
-                    </div>
-                  </td>
-                  <td class="text-center">
-                    <div class="text-uppercase text-secondary font-weight-medium">Total Plant</div>
-                    <div class="display-6 fw-bold my-3">{{$s ?? ''}}</div>
-                  </td>
-                  <td class="text-center">
-                    <div class="text-uppercase text-secondary font-weight-medium">Total Users</div>
-                    <div class="display-6 fw-bold my-3">{{$u ?? ''}}</div>
 
-                  </td>
-                  <td class="text-center">
-                    <div class="text-uppercase text-secondary font-weight-medium">Waiting</div>
-                    <div class="display-6 fw-bold my-3">{{$n ?? ''}}</div>
-                  </td>
-                </tr>
-              </thead>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="page-body">
         <div class="container-xl mb-5">
@@ -69,7 +36,7 @@
                         <td class="sort-name">{{$plant->users->perusahaan}}</td>
                         <td class="sort-name">{{$plant->users->provinsi}}</td>
                         <td class="sort-name"><b>{{$plant->sumOfPoint}}</b></td>
-                        <td class="sort-name">{{$plant->updated_at}}</td>
+                        <td class="sort-name">{{ \Carbon\Carbon::parse($plant->updated_at)->format('F d, Y') }}</td>
                         <td class="sort-progress" data-progress="30">
                           <div class="row align-items-center">
                             <div class="col-12 col-lg-auto"><a><span class="badge bg-blue-lt">Sudah Terverifikasi</span></a></div>
