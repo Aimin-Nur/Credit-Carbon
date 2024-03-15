@@ -152,47 +152,50 @@
         </div>
       </div>
       <div class="container-xl mt-4">
+        <!-- Page title -->
         <div class="row mt-5">
             <div class="col">
-                <!-- Page pre-title -->
-                <div class="page-pretitle text-center">
-                  Postingan Admin
-                </div>
-                <h1 class="text-center">
-                  Artikel Publish
-                </h1>
-              </div>
+                <div class="page-pretitle text-center">Postingan Admin</div>
+                <h1 class="text-center">Artikel Publish</h1>
             </div>
-            <div class="row row-cards mt-1">
-                @foreach ($getArtikel as $artikel)
-                <div class="col-md-4 col-lg-4">
-                        <div class="card">
-                            <!-- Photo -->
-                            <div class="img-responsive img-responsive-21x9 card-img-top"style="background-image: url('{{ asset('storage/uploads/Artikel/' . $artikel->gambar) }}')"></div>
+        </div>
+
+        <!-- Cards -->
+        <div class="page-body">
+            <div class="container-xl">
+                <div class="row row-cards">
+                    @foreach ($getArtikel as $artikel)
+                    <div class="col-md-6 col-lg-6">
+                            <div class="card">
+                                <!-- Photo -->
+                                <div class="img-responsive img-responsive-21x9 card-img-top"style="background-image: url('{{ asset('storage/uploads/Artikel/' . $artikel->gambar) }}')"></div>
                                 <div class="card-body">
-                                <h3 class="card-title">{{\Illuminate\Support\Str::words($artikel->kategori, 5, '...')}}</h3>
-                                <p class="text-secondary">{!! \Illuminate\Support\Str::words($artikel->isi, 15, '...') !!}</p>
-                            </div>
-                            <div class="card-footer">
+                                <h3 class="card-title">{{$artikel->kategori}}</h3>
+                                <p class="text-secondary">{!! \Illuminate\Support\Str::words($artikel->isi, 20, '...') !!}</p>
+                                </div>
+                                <div class="card-footer">
                                 <div class="d-flex">
                                     <a class="btn btn-link me-auto">{{ \Carbon\Carbon::parse($artikel->created_at)->format('F d, Y') }}
                                     <div class="btn-group ms-auto">
-                                        <a href="/readArtikelbyUsers/{{$artikel->id}}" class="btn btn-md btn-primary btn-icon">
+                                        <a href="/readArtikelbyUser/{{$artikel->id}}" class="btn btn-md btn-primary btn-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><path d="M3 6l0 13" /><path d="M12 6l0 13" /><path d="M21 6l0 13" /></svg>
                                         </a>
                                     </div>
                                 </div>
+                                </div>
                             </div>
                         </div>
+                        @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
     </div>
 
 
-</div>
-</div>
+    </div>
+
+
+
 
 
 
