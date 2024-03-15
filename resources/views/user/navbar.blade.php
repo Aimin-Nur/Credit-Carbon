@@ -149,10 +149,6 @@
                       <a class="dropdown-item" href="/addPlant">
                         Add Plant
                       </a>
-                      <a class="dropdown-item" href="./cookie-banner.html">
-                        Point Plant
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                      </a>
                     </div>
                   </div>
                 </div>
