@@ -54,11 +54,23 @@ class UserController extends Controller
 
         $getArtikel = ModelArtikel::where('status', "Publish")->get();
 
+        $maxTransaction = ModelTransaksi::where('idUser', $idUser)
+        ->orderByDesc('sumOfPoint')
+        ->select('sumOfPoint', 'updated_at')
+        ->first();
+
+        if($maxTransaction == NULL){
+            $maxSumOfPoint = 0;
+            $maxUpdatedAt = 0;
+        }else{
+            $maxSumOfPoint = $maxTransaction->sumOfPoint;
+            $maxUpdatedAt = $maxTransaction->updated_at;
+        }
 
         if ($userStatus === "Belum Terverifikasi") {
             return view('user.notVerif');
         } else {
-            return view('user.index', compact('getArtikel','categories', 'seriesData', 'formattedSumOfCarbon','sumOfTransaksi','sumOfPlant', 'sumOfPlantVerif', 'topFive'));
+            return view('user.index', compact('maxSumOfPoint','maxUpdatedAt','getArtikel','categories', 'seriesData', 'formattedSumOfCarbon','sumOfTransaksi','sumOfPlant', 'sumOfPlantVerif', 'topFive'));
         }
     }
 

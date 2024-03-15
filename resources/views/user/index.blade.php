@@ -54,12 +54,43 @@
             </div>
           </div>
           <div class="col-md-8">
-            <div class="card">
+            @if($maxSumOfPoint == 0)
+            <div class="card bg-red-lt">
+                <div class="card-body">
+                  <h3 class="card-title">Transaksi Tertinggi</h3>
+                  <div class="card-lg chart-lg">
+                      <div class="ribbon ribbon-top ribbon-bookmark bg-red">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 21c.5 -4.5 2.5 -8 7 -10" /><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z" /></svg>
+                      </div>
+                      <div class="card-body text-center p-4 py-5 card-lg">
+                        <div class="text-uppercase text-secondary font-weight-medium"></div>
+                        <div class="display-5 fw-bold my-3"> 0 Kg</div>
+                        <ul class="list-unstyled lh-lg">
+                          <li>Anda sama sekali belum pernah melakukan transaksi. Segera claim tanaman Anda ke Dinas Lingkungan Hidup setempat dan dapatkan credit carbon.</li>
+                        </ul>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            @else
+            <div class="card bg-green-lt">
               <div class="card-body">
-                <h3 class="card-title">Trafic Transaction</h3>
-                <div id="chart-mentions" class="chart-lg"></div>
+                <h3 class="card-title">Transaksi Tertinggi</h3>
+                <div class="card-lg chart-lg">
+                    <div class="ribbon ribbon-top ribbon-bookmark bg-green">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 21c.5 -4.5 2.5 -8 7 -10" /><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z" /></svg>
+                    </div>
+                    <div class="card-body text-center p-4 py-5 card-lg">
+                      <div class="text-uppercase text-secondary font-weight-medium"></div>
+                      <div class="display-5 fw-bold my-3">{{$maxSumOfPoint ?? '0'}} Kg</div>
+                      <ul class="list-unstyled lh-lg">
+                        <li>Anda melakukan transaksi claim credit carbon tertinggi pada tanggal<strong> {{$maxUpdatedAt ?? '0'}}</strong> dengan total point sebesar <strong>Rp. {{$maxSumOfPoint*100}}</strong></li>
+                      </ul>
+                    </div>
+                </div>
               </div>
             </div>
+            @endif
           </div>
           <div class="col-md-4 col-lg-4">
             <div class="row row-cards">

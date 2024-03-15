@@ -90,6 +90,7 @@ class DlhController extends Controller
         $regis->password = $request->input('password');
         $regis->email = $request->input('email');
         $regis->provinsi = $request->input('provinsi');
+        $regis->status = "Belum Terverifikasi";
         $regis->save();
         return redirect('/portal')->with('Accepted', 'Berhasil Registarasi Akun, Silahkan Login.');
     }
