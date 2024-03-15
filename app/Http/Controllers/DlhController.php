@@ -119,7 +119,9 @@ class DlhController extends Controller
 
     public function DetailUser()
     {
-        $getUser = DB::table('users')->where('status', "Terverifikasi")->get();
+        $user = Auth::guard('dlh')->user();
+        $prov = $user->provinsi;
+        $getUser = DB::table('users')->where('status', "Terverifikasi")->where('provinsi', $prov)->get();
         return view('DLH.detailUser', compact('getUser'));
     }
 
