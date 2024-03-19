@@ -94,4 +94,12 @@ class AuthController extends Controller
         }
     }
 
+    public function logoutDjp()
+    {
+        if(Auth::guard('djp')->check()){
+            Auth::guard('djp')->logout();
+            return redirect('/portal')->with(['logout' => 'Anda berhasil Logout.']);
+        }
+    }
+
 }

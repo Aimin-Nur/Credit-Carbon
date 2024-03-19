@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Hash;
 class ModelKlh extends Authenticatable
 {
     use HasApiTokens;
-
-
     protected $table = 'klh';
     protected $keyType = 'string'; // Mengatur tipe data kunci utama
     public $incrementing = false; // Menonaktifkan inkremental

@@ -113,7 +113,7 @@ Route::middleware(['auth:djp'])->group(function (){
     Route::get('/dashboardDjp', [DjpController::class, 'index'])->name('dashboardDJP');
     Route::get('/pengajuanPoinCarbon', [DjpController::class, 'showPengajuan']);
     Route::post('/approvalCreditCarbon/{id}', [DjpController::class, 'approvalClaimPoint']);
-    Route::post('/logoutAdmin', [AuthController::class, 'logoutAdmin']);
+    Route::get('/logoutDjp', [AuthController::class, 'logoutDjp']);
     Route::get('/historyApproval', [DjpController::class, 'historyApproval']);
     Route::get('/readArtikelbyDjp/{id}', [DjpController::class, 'readArtikel']);
 });

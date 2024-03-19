@@ -129,7 +129,7 @@
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <a href="./logoutDjp" class="dropdown-item">Logout</a>
+                <a href="/logoutDjp" class="dropdown-item">Logout</a>
               </div>
             </div>
           </div>
@@ -293,7 +293,7 @@
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <a href="/logoutDlh" class="dropdown-item">Logout</a>
+                <a href="/logoutDjp" class="dropdown-item">Logout</a>
               </div>
             </div>
           </div>

@@ -601,6 +601,6 @@ crossorigin=""></script>
     var tanggalDiv = document.getElementById('tanggalDiv');
 
     tanggalDiv.textContent = tanggalFormat;
-  </script>
+</script>
 </body>
 </html>
