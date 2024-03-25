@@ -42,8 +42,8 @@ class UserController extends Controller
         }
 
         $totalCarbonPoint = DB::table('plant')->where('idUser', $idUser)->sum('totalCarbon');
-        $formattedSumOfCarbon = number_format($totalCarbonPoint, 2);
-
+        $formattedSumOfCarbon = number_format($totalCarbonPoint * 100, 3);
+        $displayCo2 = number_format($totalCarbonPoint, 5);
 
         $userStatus = $user->status;
 
@@ -70,7 +70,7 @@ class UserController extends Controller
         if ($userStatus === "Belum Terverifikasi") {
             return view('user.notVerif');
         } else {
-            return view('user.index', compact('maxSumOfPoint','maxUpdatedAt','getArtikel','categories', 'seriesData', 'formattedSumOfCarbon','sumOfTransaksi','sumOfPlant', 'sumOfPlantVerif', 'topFive'));
+            return view('user.index', compact('maxSumOfPoint','maxUpdatedAt','getArtikel','categories', 'seriesData', 'formattedSumOfCarbon','sumOfTransaksi','sumOfPlant', 'sumOfPlantVerif', 'topFive','displayCo2'));
         }
     }
 

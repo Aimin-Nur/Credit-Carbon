@@ -155,7 +155,9 @@
 
 {{-- lokasi --}}
 <script>
+    // Mengambil koordinat lokasi users (longitude dan latitude)
     var lokasi = document.getElementById('lokasi');
+
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(successCallback, errorsCallback);
     }

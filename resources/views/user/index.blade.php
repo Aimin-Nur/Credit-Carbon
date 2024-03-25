@@ -101,7 +101,7 @@
                     <h3 class="mb-0">Total Carbon</h3>
                     <p class="text-secondary"> Verifikasi Dinas Lingkungan Hidup</p>
                     <p class="mb-3">
-                      <span class="badge bg-red-lt">{{$formattedSumOfCarbon ?? ''}} Kg</span> ->
+                      <span class="badge bg-red-lt">{{$displayCo2 ?? ''}} Kg</span>
                       <span class="badge bg-info-lt">Rp.{{$formattedSumOfCarbon ?? ''}}</span>
                     </p>
                     <div>

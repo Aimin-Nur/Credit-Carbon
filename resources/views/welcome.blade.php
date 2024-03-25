@@ -151,19 +151,19 @@
             // Calculate Total Biomassa (TB)
             TB = AGB + BGB;
 
-            // Calculate Total Berat Kering (TDW)
+            // Hitung Total Berat Kering (TDW)
             TDW = TB * 0.725;
 
-            // Calculate Total Karbon (TC)
+            // Hitung Total Karbon (TC)
             TC = TDW * 0.5;
 
             // Calculate Berat CO2
             beratCO2 = TC * 3.67;
 
-            // // Poin Credit
+            // Poin Credit
             // totalPoin = seraoanTahunan*100
 
-            // Adjust for tree tahun
+            // Serapan tahunan dibagi umur tanaman
             var serapanTahunanCO2 = beratCO2 / umurTanaman;
 
             return serapanTahunanCO2;

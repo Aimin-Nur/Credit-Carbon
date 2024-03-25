@@ -80,7 +80,7 @@ Route::group(['middleware' => 'user.data'], function () {
     Route::get('/historyClaimCarbon', [UserController::class, 'historyClaimCarbon']);
     Route::get('/viewHistory', [UserController::class, 'listHistoryClaim']);
     Route::get('/invoice/{id}', [UserController::class, 'invoice']);
-    Route::get('/readArtikelbyUsers/{id}', [UserController::class, 'readArtikel']);
+    Route::get('/readArtikelbyUser/{id}', [UserController::class, 'readArtikel']);
 });
 
 // Route Dinas Lingkungan Hidup
